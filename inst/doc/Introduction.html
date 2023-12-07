@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Wang Xiaoli" />
+
+<meta name="date" content="2023-12-04" />
+
+<title>Introduction</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction</h1>
+<h4 class="author">Wang Xiaoli</h4>
+<h4 class="date">2023-12-04</h4>
+
+
+
+<div id="outlook" class="section level2">
+<h2>Outlook</h2>
+<p><strong>SA23204175</strong> is developed to replicate the first three
+methods of scaled sparse linear regression by Tingni Sun and Cunhui
+Zhang (2012). These three methods are the l1 penalized maximum
+likelihood estimator, the bias correction estimator and the scaled lasso
+estimator, respectively.</p>
+<p>Moreover, the existing R package ‘scalreg’ by Tingni Sun is used to
+compute the scaled lasso estimator. As for the PMLE estimator and the BC
+estimator, the R functions <em>PMLE.Iter.R</em> and <em>BC.APMLE.R</em>
+have been written to compute the estimators.</p>
+<p>Our evaluation index uses <span class="math inline">\(\hat{\sigma}/\sigma\)</span> and <span class="math inline">\(\bar{\sigma}/\sigma\)</span>. The Rcpp function
+<em>compute_ratio</em> has been written to compute <span class="math inline">\(\hat{\sigma}/\sigma\)</span> and even <span class="math inline">\(\bar{\sigma}/\sigma\)</span>.</p>
+</div>
+<div id="simple-introduction-of-estimation-methods" class="section level2">
+<h2>Simple Introduction Of Estimation Methods</h2>
+<div id="the-l1-penalized-maximum-likelihood-estimator" class="section level3">
+<h3>The L1 Penalized Maximum Likelihood Estimator</h3>
+<p>The l1 penalized maximum likelihood estimator (PMLE) is <span class="math display">\[(\hat{\beta}^{(\mathrm{pmle})},\hat{\sigma}^{(\mathrm{pmle})})=\mathrm{argmax}_{\beta,\sigma}(-\frac{|y-X\beta|_2^2}{2n\sigma^2}-\log\sigma-\lambda_0\frac{|\beta|_1}{\sigma}).\]</span></p>
+<p>Moreover, the objective function is globally convex and the PMLE
+estimator is equivalent to the limit of the iteration <span class="math inline">\(\hat{\sigma}\leftarrow\{y&#39;(y-X\hat{\beta})/n\}^{1/2}\)</span>
+and <span class="math inline">\(\hat{\beta}\leftarrow\hat{\beta}(\hat{\sigma}\lambda_0)\)</span>
+where <span class="math inline">\(\hat{\beta}(\lambda)\)</span> is the
+lasso estimator with the penalty level <span class="math inline">\(\lambda\)</span>: <span class="math inline">\(\hat{\beta}(\lambda)=\mathrm{argmin}_{\beta}\frac{|y-X\beta|_2^2}{2n}+\lambda|\beta|_1\)</span>.</p>
+</div>
+<div id="the-bias-correction-estimator" class="section level3">
+<h3>The Bias Correction Estimator</h3>
+<p>The bias correction estimator (BC) is one iteration with <span class="math inline">\((\hat{\beta}^{(\mathrm{pmle})},\hat{\sigma}^{(\mathrm{pmle})})\)</span>:
+<span class="math display">\[\hat{\sigma}^{(\mathrm{bc})}=|y-X\hat{\beta}(\hat{\sigma}^{(\mathrm{pmle})}\lambda_0)|/n^{1/2},\hat{\beta}^{(\mathrm{bc})}=\hat{\beta}(\hat{\sigma}^{(\mathrm{bc})}\lambda_0).\]</span></p>
+<p>The BC estimator is used to remove the positive bias of the noise
+level in the PMLE estimator.</p>
+</div>
+<div id="the-scaled-lasso-estimator" class="section level3">
+<h3>The Scaled Lasso Estimator</h3>
+<p>The scaled lasso estimator has the form: <span class="math display">\[(\hat{\beta}^{(\mathrm{SL})},\hat{\sigma}^{(\mathrm{SL})})=\mathrm{argmin}_{\beta,\sigma}\frac{|y-X\beta|_2^2}{2n\sigma}+\frac{\sigma}{2}+\lambda_0|\beta|_1.\]</span></p>
+<p>Moreover, the scaled lasso estimator is equivalent to the limit of
+the iteration <span class="math inline">\(\hat{\sigma}\leftarrow|y-X\hat{\beta}|_2/n^{1/2}\)</span>
+and <span class="math inline">\(\hat{\beta}\leftarrow\hat{\beta}(\hat{\sigma}\lambda_0)\)</span>.</p>
+<p>Tingni Sun and Cunhui Zhang(2012) is mainly based on their early work
+“comments on: l1-penalization for mixture regression models by Stadler
+et al.”. This comment paper demonstrates with simulation the superiority
+of the scaled lasso estimator on removing the positive bias.</p>
+</div>
+</div>
+<div id="simulation-study" class="section level2">
+<h2>Simulation Study</h2>
+<div id="source-r-code-for-pmle.iter.r-and-bc.apmle.r" class="section level3">
+<h3>Source R code for <em>PMLE.Iter.R</em> and <em>BC.APMLE.R</em></h3>
+<p>The source R code for <em>PMLE.Iter.R</em> is displayed below.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>PMLE.Iter.R<span class="ot">&lt;-</span><span class="cf">function</span>(x,y,lambda0,<span class="at">max.it=</span><span class="dv">5000</span>){</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>  n<span class="ot">&lt;-</span><span class="fu">nrow</span>(x);p<span class="ot">&lt;-</span><span class="fu">ncol</span>(x)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  beta.f<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">0</span>,p)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  beta<span class="ot">&lt;-</span>beta.f;sigma<span class="ot">&lt;-</span><span class="fl">0.1</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>max.it){</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    sigma.hat<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">sum</span>(y<span class="sc">*</span>(y<span class="sc">-</span>x<span class="sc">%*%</span>beta))<span class="sc">/</span>n)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>    fit.hat<span class="ot">&lt;-</span><span class="fu">lars</span>(x,y,<span class="at">type=</span><span class="st">&quot;lasso&quot;</span>,<span class="at">intercept=</span>F,<span class="at">normalize=</span>F,<span class="at">use.Gram=</span>F)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>    beta.hat<span class="ot">&lt;-</span><span class="fu">predict.lars</span>(fit.hat,<span class="at">s=</span>n<span class="sc">*</span>lambda0<span class="sc">*</span>sigma.hat,<span class="at">type=</span><span class="st">&quot;coefficients&quot;</span>,<span class="at">mode=</span><span class="st">&quot;lambda&quot;</span>)<span class="sc">$</span>coef</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">abs</span>(sigma<span class="sc">-</span>sigma.hat)<span class="sc">&lt;</span><span class="fl">1e-6</span>) <span class="cf">break</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>    beta<span class="ot">&lt;-</span>beta.hat;sigma<span class="ot">&lt;-</span>sigma.hat</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>  }  </span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">beta.pmle=</span>beta.hat,<span class="at">sigma.pmle=</span>sigma.hat)</span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>}</span></code></pre></div>
+<p>The source R code for <em>BC.APMLE.R</em> is displayed below.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>BC.APMLE.R<span class="ot">&lt;-</span><span class="cf">function</span>(x,y,lambda0,beta.pmle,sigma.pmle){</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  n<span class="ot">&lt;-</span><span class="fu">nrow</span>(x);p<span class="ot">&lt;-</span><span class="fu">ncol</span>(x)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  f<span class="ot">&lt;-</span><span class="fu">lars</span>(x,y,<span class="at">type=</span><span class="st">&quot;lasso&quot;</span>,<span class="at">intercept=</span>F,<span class="at">normalize=</span>F,<span class="at">use.Gram=</span>F)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  y.hat<span class="ot">&lt;-</span><span class="fu">predict.lars</span>(f,x,<span class="at">s=</span>n<span class="sc">*</span>lambda0<span class="sc">*</span>sigma.pmle,<span class="at">type=</span><span class="st">&quot;fit&quot;</span>,<span class="at">mode=</span><span class="st">&quot;lambda&quot;</span>)<span class="sc">$</span>fit</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  sigma.bc<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">mean</span>((y<span class="sc">-</span>y.hat)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  beta.bc<span class="ot">&lt;-</span><span class="fu">predict.lars</span>(f,<span class="at">s=</span>n<span class="sc">*</span>lambda0<span class="sc">*</span>sigma.bc,<span class="at">type=</span><span class="st">&quot;coefficients&quot;</span>,<span class="at">mode=</span><span class="st">&quot;lambda&quot;</span>)<span class="sc">$</span>coef</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">beta.bc=</span>beta.bc,<span class="at">sigma.bc=</span>sigma.bc) </span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="simulation-of-partial-results-in-table-1" class="section level3">
+<h3>Simulation Of Partial Results In Table 1</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(SA23204175)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">library</span>(scalreg)</span></code></pre></div>
+<pre><code>## Loading required package: lars</code></pre>
+<pre><code>## Loaded lars 1.3</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">library</span>(lars)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co">#Initialize parameters</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="dv">200</span>;p<span class="ot">&lt;-</span><span class="dv">2000</span>;r0<span class="ot">&lt;-</span><span class="fl">0.5</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>lambda1<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">log</span>(p)<span class="sc">/</span>n)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>lambda2<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">log</span>(p)<span class="sc">/</span>n)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>lambda3<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="dv">4</span><span class="sc">*</span><span class="fu">log</span>(p)<span class="sc">/</span>n)</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#Generate covariance matrix Sigma of Gaussian distribution</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#library(pracma) #create basic matrices like eye(n,m=n), ones(n,m=n) and zeros(n,m=n)</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>Sigma1<span class="ot">&lt;-</span>pracma<span class="sc">::</span><span class="fu">eye</span>(p);Sigma2<span class="ot">&lt;-</span><span class="fl">0.5</span><span class="sc">*</span>pracma<span class="sc">::</span><span class="fu">eye</span>(p)<span class="sc">+</span><span class="fl">0.5</span><span class="sc">*</span>pracma<span class="sc">::</span><span class="fu">ones</span>(p) </span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#Generate design matrix X</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="fu">library</span>(MASS);<span class="fu">set.seed</span>(<span class="dv">123</span>)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;MASS&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:DAAG&#39;:
+## 
+##     hills</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>X1<span class="ot">&lt;-</span><span class="fu">mvrnorm</span>(n,<span class="fu">rep</span>(<span class="dv">0</span>,p),Sigma1)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>X2<span class="ot">&lt;-</span><span class="fu">mvrnorm</span>(n,<span class="fu">rep</span>(<span class="dv">0</span>,p),Sigma2)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co">#Initialize parameters</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>sigma<span class="ot">&lt;-</span><span class="dv">1</span>;beta.star<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span>p,<span class="at">ncol=</span><span class="dv">1</span>);beta.star[<span class="dv">1</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">3</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>beta.star[<span class="dv">2</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">3</span>);beta.star[<span class="dv">3</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">3</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="co">#Generate response vector y</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>y1<span class="ot">&lt;-</span><span class="fu">as.vector</span>(X1<span class="sc">%*%</span>beta.star)<span class="sc">+</span><span class="fu">rnorm</span>(n,<span class="dv">0</span>,sigma<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>y2<span class="ot">&lt;-</span><span class="fu">as.vector</span>(X2<span class="sc">%*%</span>beta.star)<span class="sc">+</span><span class="fu">rnorm</span>(n,<span class="dv">0</span>,sigma<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co">#Method-PMLE Dataset-(X1,y1) LSE-FALSE</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>PMLE.LSEF<span class="fl">.1</span><span class="ot">&lt;-</span><span class="fu">list</span>(<span class="at">l1=</span><span class="fu">PMLE.Iter.R</span>(X1,y1,<span class="at">lambda0=</span>lambda1),<span class="at">l2=</span><span class="fu">PMLE.Iter.R</span>(X1,y1,<span class="at">lambda0=</span>lambda2),<span class="at">l3=</span><span class="fu">PMLE.Iter.R</span>(X1,y1,<span class="at">lambda0=</span>lambda3))</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co">#Method-BC Dataset-(X1,y1) LSE-FALSE </span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>BC.LSEF<span class="fl">.1</span><span class="ot">&lt;-</span><span class="fu">list</span>(<span class="at">l1=</span><span class="fu">BC.APMLE.R</span>(X1,y1,<span class="at">lambda0=</span>lambda1,PMLE.LSEF<span class="sc">$</span>l1<span class="sc">$</span>beta.pmle,PMLE.LSEF<span class="fl">.1</span><span class="sc">$</span>l1<span class="sc">$</span>sigma.pmle),</span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>                <span class="at">l2=</span><span class="fu">BC.APMLE.R</span>(X1,y1,<span class="at">lambda0=</span>lambda2,PMLE.LSEF<span class="sc">$</span>l2<span class="sc">$</span>beta.pmle,PMLE.LSEF<span class="fl">.1</span><span class="sc">$</span>l2<span class="sc">$</span>sigma.pmle),</span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>                <span class="at">l3=</span><span class="fu">BC.APMLE.R</span>(X1,y1,<span class="at">lambda0=</span>lambda3,PMLE.LSEF<span class="sc">$</span>l3<span class="sc">$</span>beta.pmle,PMLE.LSEF<span class="fl">.1</span><span class="sc">$</span>l3<span class="sc">$</span>sigma.pmle))</span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="co">#Method-SLASSO Dataset-(X1,y1) LSE-FALSE </span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a>SL.LSEF<span class="fl">.1</span><span class="ot">&lt;-</span><span class="fu">list</span>(<span class="at">l1=</span><span class="fu">scalreg</span>(X1,y1,<span class="at">lam0=</span>lambda1,<span class="at">LSE=</span><span class="cn">FALSE</span>),</span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a>                <span class="at">l2=</span><span class="fu">scalreg</span>(X1,y1,<span class="at">lam0=</span>lambda2,<span class="at">LSE=</span><span class="cn">FALSE</span>),</span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a>                <span class="at">l3=</span><span class="fu">scalreg</span>(X1,y1,<span class="at">lam0=</span>lambda3,<span class="at">LSE=</span><span class="cn">FALSE</span>))</span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a><span class="co">#Method-PMLE Dataset-(X2,y2) LSE-FALSE</span></span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a>PMLE.LSEF<span class="fl">.2</span><span class="ot">&lt;-</span><span class="fu">list</span>(<span class="at">l1=</span><span class="fu">PMLE.Iter.R</span>(X2,y2,<span class="at">lambda0=</span>lambda1),<span class="at">l2=</span><span class="fu">PMLE.Iter.R</span>(X2,y2,<span class="at">lambda0=</span>lambda2),<span class="at">l3=</span><span class="fu">PMLE.Iter.R</span>(X2,y2,<span class="at">lambda0=</span>lambda3))</span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a><span class="co">#Method-BC Dataset-(X2,y2) LSE-FALSE </span></span>
+<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a>BC.LSEF<span class="fl">.2</span><span class="ot">&lt;-</span><span class="fu">list</span>(<span class="at">l1=</span><span class="fu">BC.APMLE.R</span>(X2,y2,<span class="at">lambda0=</span>lambda1,PMLE.LSEF<span class="sc">$</span>l1<span class="sc">$</span>beta.pmle,PMLE.LSEF<span class="fl">.2</span><span class="sc">$</span>l1<span class="sc">$</span>sigma.pmle),</span>
+<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a>                <span class="at">l2=</span><span class="fu">BC.APMLE.R</span>(X2,y2,<span class="at">lambda0=</span>lambda2,PMLE.LSEF<span class="sc">$</span>l2<span class="sc">$</span>beta.pmle,PMLE.LSEF<span class="fl">.2</span><span class="sc">$</span>l2<span class="sc">$</span>sigma.pmle),</span>
+<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a>                <span class="at">l3=</span><span class="fu">BC.APMLE.R</span>(X2,y2,<span class="at">lambda0=</span>lambda3,PMLE.LSEF<span class="sc">$</span>l3<span class="sc">$</span>beta.pmle,PMLE.LSEF<span class="fl">.2</span><span class="sc">$</span>l3<span class="sc">$</span>sigma.pmle))</span>
+<span id="cb11-26"><a href="#cb11-26" tabindex="-1"></a></span>
+<span id="cb11-27"><a href="#cb11-27" tabindex="-1"></a><span class="co">#Method-SLASSO Dataset-(X2,y2) LSE-FALSE </span></span>
+<span id="cb11-28"><a href="#cb11-28" tabindex="-1"></a></span>
+<span id="cb11-29"><a href="#cb11-29" tabindex="-1"></a>SL.LSEF<span class="fl">.2</span><span class="ot">&lt;-</span><span class="fu">list</span>(<span class="at">l1=</span><span class="fu">scalreg</span>(X2,y2,<span class="at">lam0=</span>lambda1,<span class="at">LSE=</span><span class="cn">FALSE</span>),</span>
+<span id="cb11-30"><a href="#cb11-30" tabindex="-1"></a>                <span class="at">l2=</span><span class="fu">scalreg</span>(X2,y2,<span class="at">lam0=</span>lambda2,<span class="at">LSE=</span><span class="cn">FALSE</span>),</span>
+<span id="cb11-31"><a href="#cb11-31" tabindex="-1"></a>                <span class="at">l3=</span><span class="fu">scalreg</span>(X2,y2,<span class="at">lam0=</span>lambda3,<span class="at">LSE=</span><span class="cn">FALSE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>result1<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="dv">9</span>,<span class="at">ncol=</span><span class="dv">2</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">rownames</span>(result1)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;PMLE/Lambda1&quot;</span>,<span class="st">&quot;PMLE/Lambda2&quot;</span>,<span class="st">&quot;PMLE/Lambda3&quot;</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>                     <span class="st">&quot;BC/Lambda1&quot;</span>,<span class="st">&quot;BC/Lambda2&quot;</span>,<span class="st">&quot;BC/Lambda3&quot;</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>                     <span class="st">&quot;SLASSO/Lambda1&quot;</span>,<span class="st">&quot;SLASSO/Lambda2&quot;</span>,<span class="st">&quot;SLASSO/Lambda3&quot;</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="fu">colnames</span>(result1)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;sigma.hat/sigma*&quot;</span>,<span class="st">&quot;AMS&quot;</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>result1[<span class="dv">1</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>PMLE.LSEF<span class="fl">.1</span><span class="sc">$</span>l1<span class="sc">$</span>sigma.pmle</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>result1[<span class="dv">2</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>PMLE.LSEF<span class="fl">.1</span><span class="sc">$</span>l2<span class="sc">$</span>sigma.pmle</span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>result1[<span class="dv">3</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>PMLE.LSEF<span class="fl">.1</span><span class="sc">$</span>l3<span class="sc">$</span>sigma.pmle</span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>result1[<span class="dv">4</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>BC.LSEF<span class="fl">.1</span><span class="sc">$</span>l1<span class="sc">$</span>sigma.bc</span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>result1[<span class="dv">5</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>BC.LSEF<span class="fl">.1</span><span class="sc">$</span>l2<span class="sc">$</span>sigma.bc</span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>result1[<span class="dv">6</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>BC.LSEF<span class="fl">.1</span><span class="sc">$</span>l3<span class="sc">$</span>sigma.bc</span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>result1[<span class="dv">7</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>SL.LSEF<span class="fl">.1</span><span class="sc">$</span>l1<span class="sc">$</span>hsigma</span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a>result1[<span class="dv">8</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>SL.LSEF<span class="fl">.1</span><span class="sc">$</span>l2<span class="sc">$</span>hsigma</span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a>result1[<span class="dv">9</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>SL.LSEF<span class="fl">.1</span><span class="sc">$</span>l3<span class="sc">$</span>hsigma</span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a>result1[<span class="dv">1</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(PMLE.LSEF<span class="fl">.1</span><span class="sc">$</span>l1<span class="sc">$</span>beta.pmle<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a>result1[<span class="dv">2</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(PMLE.LSEF<span class="fl">.1</span><span class="sc">$</span>l2<span class="sc">$</span>beta.pmle<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a>result1[<span class="dv">3</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(PMLE.LSEF<span class="fl">.1</span><span class="sc">$</span>l3<span class="sc">$</span>beta.pmle<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a>result1[<span class="dv">4</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(BC.LSEF<span class="fl">.1</span><span class="sc">$</span>l1<span class="sc">$</span>beta.bc<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a>result1[<span class="dv">5</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(BC.LSEF<span class="fl">.1</span><span class="sc">$</span>l2<span class="sc">$</span>beta.bc<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a>result1[<span class="dv">6</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(BC.LSEF<span class="fl">.1</span><span class="sc">$</span>l3<span class="sc">$</span>beta.bc<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a>result1[<span class="dv">7</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(SL.LSEF<span class="fl">.1</span><span class="sc">$</span>l1<span class="sc">$</span>coefficients<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a>result1[<span class="dv">8</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(SL.LSEF<span class="fl">.1</span><span class="sc">$</span>l2<span class="sc">$</span>coefficients<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a>result1[<span class="dv">9</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(SL.LSEF<span class="fl">.1</span><span class="sc">$</span>l3<span class="sc">$</span>coefficients<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-25"><a href="#cb12-25" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" tabindex="-1"></a>result2<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="dv">9</span>,<span class="at">ncol=</span><span class="dv">2</span>)</span>
+<span id="cb12-27"><a href="#cb12-27" tabindex="-1"></a><span class="fu">rownames</span>(result2)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;PMLE/Lambda1&quot;</span>,<span class="st">&quot;PMLE/Lambda2&quot;</span>,<span class="st">&quot;PMLE/Lambda3&quot;</span>,</span>
+<span id="cb12-28"><a href="#cb12-28" tabindex="-1"></a>                     <span class="st">&quot;BC/Lambda1&quot;</span>,<span class="st">&quot;BC/Lambda2&quot;</span>,<span class="st">&quot;BC/Lambda3&quot;</span>,</span>
+<span id="cb12-29"><a href="#cb12-29" tabindex="-1"></a>                     <span class="st">&quot;SLASSO/Lambda1&quot;</span>,<span class="st">&quot;SLASSO/Lambda2&quot;</span>,<span class="st">&quot;SLASSO/Lambda3&quot;</span>)</span>
+<span id="cb12-30"><a href="#cb12-30" tabindex="-1"></a><span class="fu">colnames</span>(result2)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;sigma.hat/sigma*&quot;</span>,<span class="st">&quot;AMS&quot;</span>)</span>
+<span id="cb12-31"><a href="#cb12-31" tabindex="-1"></a>result2[<span class="dv">1</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>PMLE.LSEF<span class="fl">.2</span><span class="sc">$</span>l1<span class="sc">$</span>sigma.pmle</span>
+<span id="cb12-32"><a href="#cb12-32" tabindex="-1"></a>result2[<span class="dv">2</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>PMLE.LSEF<span class="fl">.2</span><span class="sc">$</span>l2<span class="sc">$</span>sigma.pmle</span>
+<span id="cb12-33"><a href="#cb12-33" tabindex="-1"></a>result2[<span class="dv">3</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>PMLE.LSEF<span class="fl">.2</span><span class="sc">$</span>l3<span class="sc">$</span>sigma.pmle</span>
+<span id="cb12-34"><a href="#cb12-34" tabindex="-1"></a>result2[<span class="dv">4</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>BC.LSEF<span class="fl">.2</span><span class="sc">$</span>l1<span class="sc">$</span>sigma.bc</span>
+<span id="cb12-35"><a href="#cb12-35" tabindex="-1"></a>result2[<span class="dv">5</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>BC.LSEF<span class="fl">.2</span><span class="sc">$</span>l2<span class="sc">$</span>sigma.bc</span>
+<span id="cb12-36"><a href="#cb12-36" tabindex="-1"></a>result2[<span class="dv">6</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>BC.LSEF<span class="fl">.2</span><span class="sc">$</span>l3<span class="sc">$</span>sigma.bc</span>
+<span id="cb12-37"><a href="#cb12-37" tabindex="-1"></a>result2[<span class="dv">7</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>SL.LSEF<span class="fl">.2</span><span class="sc">$</span>l1<span class="sc">$</span>hsigma</span>
+<span id="cb12-38"><a href="#cb12-38" tabindex="-1"></a>result2[<span class="dv">8</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>SL.LSEF<span class="fl">.2</span><span class="sc">$</span>l2<span class="sc">$</span>hsigma</span>
+<span id="cb12-39"><a href="#cb12-39" tabindex="-1"></a>result2[<span class="dv">9</span>,<span class="dv">1</span>]<span class="ot">&lt;-</span>SL.LSEF<span class="fl">.2</span><span class="sc">$</span>l3<span class="sc">$</span>hsigma</span>
+<span id="cb12-40"><a href="#cb12-40" tabindex="-1"></a></span>
+<span id="cb12-41"><a href="#cb12-41" tabindex="-1"></a>result2[<span class="dv">1</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(PMLE.LSEF<span class="fl">.2</span><span class="sc">$</span>l1<span class="sc">$</span>beta.pmle<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-42"><a href="#cb12-42" tabindex="-1"></a>result2[<span class="dv">2</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(PMLE.LSEF<span class="fl">.2</span><span class="sc">$</span>l2<span class="sc">$</span>beta.pmle<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-43"><a href="#cb12-43" tabindex="-1"></a>result2[<span class="dv">3</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(PMLE.LSEF<span class="fl">.2</span><span class="sc">$</span>l3<span class="sc">$</span>beta.pmle<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-44"><a href="#cb12-44" tabindex="-1"></a>result2[<span class="dv">4</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(BC.LSEF<span class="fl">.2</span><span class="sc">$</span>l1<span class="sc">$</span>beta.bc<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-45"><a href="#cb12-45" tabindex="-1"></a>result2[<span class="dv">5</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(BC.LSEF<span class="fl">.2</span><span class="sc">$</span>l2<span class="sc">$</span>beta.bc<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-46"><a href="#cb12-46" tabindex="-1"></a>result2[<span class="dv">6</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(BC.LSEF<span class="fl">.2</span><span class="sc">$</span>l3<span class="sc">$</span>beta.bc<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-47"><a href="#cb12-47" tabindex="-1"></a>result2[<span class="dv">7</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(SL.LSEF<span class="fl">.2</span><span class="sc">$</span>l1<span class="sc">$</span>coefficients<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-48"><a href="#cb12-48" tabindex="-1"></a>result2[<span class="dv">8</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(SL.LSEF<span class="fl">.2</span><span class="sc">$</span>l2<span class="sc">$</span>coefficients<span class="sc">!=</span><span class="dv">0</span>)</span>
+<span id="cb12-49"><a href="#cb12-49" tabindex="-1"></a>result2[<span class="dv">9</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="fu">sum</span>(SL.LSEF<span class="fl">.2</span><span class="sc">$</span>l3<span class="sc">$</span>coefficients<span class="sc">!=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;result1 with (X1,y1)(r0=0)</span><span class="sc">\n</span><span class="st">&quot;</span>);result1</span></code></pre></div>
+<pre><code>## result1 with (X1,y1)(r0=0)</code></pre>
+<pre><code>##                sigma.hat/sigma* AMS
+## PMLE/Lambda1       5.326073e-01   4
+## PMLE/Lambda2       7.532200e-01   4
+## PMLE/Lambda3       1.065213e+00   4
+## BC/Lambda1         2.093858e-01   4
+## BC/Lambda2         4.187714e-01   4
+## BC/Lambda3         8.375422e-01   4
+## SLASSO/Lambda1     4.785396e-05   4
+## SLASSO/Lambda2     1.150425e-04   4
+## SLASSO/Lambda3     3.054433e-04   4</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">result2 with (X2,y2)(r0=0.5)</span><span class="sc">\n</span><span class="st">&quot;</span>);result2</span></code></pre></div>
+<pre><code>## 
+## result2 with (X2,y2)(r0=0.5)</code></pre>
+<pre><code>##                sigma.hat/sigma* AMS
+## PMLE/Lambda1          1.1048402  27
+## PMLE/Lambda2          1.1970252  20
+## PMLE/Lambda3          1.3336399  15
+## BC/Lambda1            0.9523801  27
+## BC/Lambda2            1.0110280  22
+## BC/Lambda3            1.1420773  17
+## SLASSO/Lambda1        0.9390241  27
+## SLASSO/Lambda2        0.9781786  23
+## SLASSO/Lambda3        1.0649172  19</code></pre>
+<p>Give simple explanations about this simple simulation with only one
+replication (100 replications in the paper ‘scaled sparse linear
+regression’;see more details in our complete simulation document [if
+necessary, contact me with email]).</p>
+<p>1.Both bias correction (BC) and scaled lasso (SLASSO) could remove
+some positive bias of PMLE. Moreover, scaled lasso performs better than
+bias correction on it. (Notation: see scaled lasso in result1 and find
+these abnormal values, here regard it as an accident because in our
+complete simulation study the results are consistent with the paper
+‘scaled sparse linear regression’.)</p>
+<p>2.Lambda2 seems to be the best choice among lambda1, lambda2 and
+lambda3.</p>
+<p>3.Average model sizes (AMS) of result1 is close to the true model
+size 3. But average model sizes of result2 is too large. Here give an
+explanation to it: due to the setting of r0=0.5, rows of X2 are related
+resulting in large average model sizes.</p>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

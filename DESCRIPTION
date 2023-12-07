@@ -1,0 +1,18 @@
+Package: SA23204175
+Type: Package
+Title: Final Project Of Statistical Computing
+Version: 1.0
+Date: 2023-12-04
+Author: Wang Xiaoli
+Maintainer: Wang Xiaoli <wxl1026@mail.ustc.edu.cn>
+Description: Final project includes two functions of my research project
+            and all my homework answers.
+License: GPL (>= 2)
+Imports: Rcpp, microbenchmark, coda, DAAG, boot, bootstrap, stats, lars, scalreg, MASS, pracma
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
+LinkingTo: Rcpp
+RoxygenNote: 7.2.3
+Encoding: UTF-8
+URL: http://github.com/wxl1234567/SA23204175
+BugReports: http://github.com/wxl1234567/SA23204175/issues
